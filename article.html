@@ -1,0 +1,473 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="txt/html; charset=utf-8" />
+<title>x1ngの博客– 前端开发 | web前端技术博客</title>
+<meta name="Keywords" content="x1ngの博客,前端开发,前端博客,前端技术,web前端博客,web前端开发博客,xing,前端知识 , CSS , javascript , jquery，PHP,HTML" >
+<meta name="Description" content="个人博客,记录工作中遇到的问题收集的文章资料,以及经验总结和分享！" >
+<meta name="author" content="x1ng,一个热爱前端与生活的人,梦想成为web前端开发大师" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="css/common.css" rel="stylesheet">
+<link href="css/article.css" rel="stylesheet">
+<link rel="stylesheet" href="css/mplayer.css">
+<link rel="shortcut icon" href="images/x.jpg" />
+<link rel="apple-touch-icon" href="images/x.jpg" /> 
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header>
+ <h1 style="font-size:35px;font-style:blod;color:#000;"><a href="#">x1ngの博客</a></h1>
+  <p>只要心中有所想，就不会迷茫，也许前行的路不是那样平坦，你会感到力不从心，只要坚定的走下去，回味当时苦涩已化为甜美。</p>
+</header>
+<div class="navswf">
+<object id="customMenu" data="images/nav.swf" width="528" height="70" type="application/x-shockwave-flash"><param name="allowScriptAccess" value="always"><param name="allownetworking" value="all"><param name="allowFullScreen" value="true"><param name="wmode" value="transparent"><param name="menu" value="false"><param name="scale" value="noScale"><param name="salign" value="1">
+</object>
+<div id="nav">
+     <ul>
+        <li><a href="index.html" >网站首页</a></li>
+        <!-- <li><a href="#" target="_self" title="我的作品">我的作品</a></li> -->
+        <li><a href="list.html" target="_self" title="技术探讨">前端秘籍</a></li>
+        <li><a href="Jh_records.html" target="_self" title="慢生活">江湖录</a></li>
+        <li><a href="about.html" target="_self" title="发现不一样的我">关于我</a></li>
+       <li><a href="message.html" target="_self" title="有话对我说">江湖留言</a></li>
+     </ul>
+     <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题-->
+</div>
+</div>
+<div class="blank"></div>
+
+  <div class="con_content">
+    <div class="about_box">
+      <h2 class="nh1"><span>您现在的位置是：<a href="/" target="_blank">网站首页</a>>><a href="#" target="_blank">前端秘籍</a></span><b>前端秘籍</b></h2>
+      <div class="dtxw box">
+          <div class="article_lf">
+               <div class="single">
+                   <div>
+                     <h2>浅谈js函数柯里化</h2>
+                     <div class="entry-meta">
+                        <time class="date">2017年5月3日</time>
+                        <div id="about-author">
+                            作者：<a href="#" title="由他来自江湖发布" rel="author">他来自江湖</a>
+                        </div>
+                        <span class="sep2">分类：</span>
+                        <ul class="post-categories">
+                            <li>
+                                <a href="http://www.ilovecc.ren/?cat=3" rel="category">技术探讨</a>
+                            </li>
+                        </ul>
+                        <span class="sep2">阅读：128</span>
+                     </div>
+                   </div>
+
+                    <div class="entry-content">
+                          <p>在计算机科学中，柯里化（<em>Currying</em>）是把<span style="color:#B22222;"><strong>接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数，并且返回接受余下的参数且返回结果的新函数的技术</strong></span>。这个技术由 <em>Christopher Strachey</em> 以逻辑学家 <em>Haskell Curry </em>命名的，尽管它是 <em>Moses Schnfinkel </em>和 <em>Gottlob Frege</em> 发明的。<span id="more-1039"></span>
+                      </p>
+                      <p>
+                        在直觉上，柯里化声称“<strong><span style="color:#800000;">如果你固定某些参数，你将得到接受余下参数的一个函数</span></strong>”。
+                      </p>
+                      <p>
+                        以上引用百度百科的词解释。通俗讲，一个currying的函数接收一些参数，接收了这些参数之后，该函数并不是立即求值，而是继续返回另一个函数，刚才传入的参数在函数形成的闭包中被保存起来，待到函数真正需要求值的时候，之前传入的所有参数都能用于求值。
+                      </p>
+                      <p>
+                        通用实现：
+                      </p>
+                      <pre>function currying(fn) {
+                          var slice = Array.prototype.slice,
+                          _args = slice.call(arguments, 1);
+                          return function () {
+                              var _inargs = slice.call(arguments);
+                              return fn.apply(null, _args.concat(_inargs));
+                          };
+                      }
+                      </pre>
+                      <p>
+                        仅仅看通用函数很难看懂究竟为何要柯里化以及通用函数的意义是什么，举几个例子，柯里化的实用性体现在很多方面：
+                      </p>
+                      <p>
+                        <strong><span style="font-size:18px;">1 提高适用性。</span></strong>
+                      </p>
+                      <p>
+                        对不同的应用场景往往要传递很多参数来解决特定问题。有时候应用中，同一种规则可能会反复使用，这就可能会造成代码的重复性。通用函数解决了兼容性问题，但同时也会带来使用的不便利性。
+                      </p>
+                      <p>
+                        看下面一个例子：
+                      </p>
+                      <pre>function square(i) {
+                          return i * i;
+                      }
+                      function dubble(i) {
+                          return i *= 2;
+                      }
+                      function map(handeler, list) {
+                          return list.map(handeler);
+                      }
+                      // 数组的每一项平方
+                      map(square, [1, 2, 3, 4, 5]);
+                      map(square, [6, 7, 8, 9, 10]);
+                      map(square, [10, 20, 30, 40, 50]);
+                      // 数组的每一项加倍
+                      map(dubble, [1, 2, 3, 4, 5]);
+                      map(dubble, [6, 7, 8, 9, 10]);
+                      map(dubble, [10, 20, 30, 40, 50]);
+                      </pre>
+                      <p>
+                        上例中创建了两个应用函数<em>square</em>和<em>double</em>，同时创建了<em>map</em>通用函数，用于适应这两个不同的应用场景（数组加倍、数组求平方）。
+                      </p>
+                      <p>
+                        实际应用中除了<em>square</em>和<em>double</em>可能会包含更多的应用函数，因此我们每次调用<em>map</em>函数都要像上面一样不停的重复输入<em>square</em>、<em>double</em>……通用性的增强必然带来适用性的减弱。但是，我们依然可以在中间找到一种平衡。
+                      </p>
+                      <p>
+                        利用柯里化改造一下：
+                      </p>
+                      <pre>function currying(fn) {
+                          var slice = Array.prototype.slice,
+                          _args = slice.call(arguments, 1);
+                          return function () {
+                              var _inargs = slice.call(arguments);
+                              return fn.apply(null, _args.concat(_inargs));
+                          };
+                      }
+                      function square(i) {
+                          return i * i;
+                      }
+                      function map(handeler, list) {
+                          return list.map(handeler);
+                      }
+                      var mapSQ = currying(map, square);
+                      mapSQ([1, 2, 3, 4, 5]);
+                      mapSQ([6, 7, 8, 9, 10]);
+                      mapSQ([10, 20, 30, 40, 50]);
+                      </pre>
+                      <p>
+                        柯里化后返回的依然是一个函数，因此我们依旧可以继续调用该函数去传入更多的参数。在上面的例子中，<em>mapSQ</em>中传入了参数：应用函数<em>map</em>和<em>square</em>并返回一个新的<em>function</em>，第一个参数<em>map</em>是最终需要执行的函数，在返回函数的同时使用闭包保存了需要传入<em>map</em>的第一个参数<em>square。</em>而下一步执行<em>mapSQ时同时</em>传入了<em>map</em>的第二个参数：数组（[1,2,3,4,5]），并且将<em>square</em>和该数组进行合并成为最后的参数，使用<em>apply</em>传入<em>map</em>函数。
+                      </p>
+                      <p>
+                        柯里化的第一个参数固定缩小了函数的适用范围，但同时提高函数的适性。由此，可知柯里化不仅仅是提高了代码的合理性，更重的它突出一种思想—降低适用范围，提高适用性。接下来的例子都是大同小异，就不做太多解释。
+                      </p>
+                      <p>
+                        一个应用范围更广泛更熟悉的例子：
+                      </p>
+                      <pre>function Ajax() {
+                          this.xhr = new XMLHttpRequest();
+                      }
+                      Ajax.prototype.open = function(type, url, data, callback) {
+                          this.onload = function() {
+                              callback(this.xhr.responseText, this.xhr.status, this.xhr);
+                          }
+                          this.xhr.open(type, url, data.async);
+                          this.xhr.send(data.paras);
+                      }
+                      'get post'.split(' ').forEach(function(mt) {
+                          Ajax.prototype[mt] = currying(Ajax.prototype.open, mt);
+                      });
+                      var xhr = new Ajax();
+                      xhr.get('/articles/list.php', {},
+                      function(datas) {
+                          // done(datas)    
+                      });
+
+                      var xhr1 = new Ajax();
+                      xhr1.post('/articles/add.php', {},
+                      function(datas) {
+                          // done(datas)    
+                      });
+                      </pre>
+                      <p>
+                        <strong><span style="font-size:18px;">2 延迟执行。</span></strong>
+                      </p>
+                      <p>
+                        柯里化的另一个应用场景是延迟执行。不断的柯里化，累积传入的参数，最后执行。
+                      </p>
+                      <p>
+                        通用的写法：
+                      </p>
+                      <pre>var curry = function(fn) {
+                          var _args = []
+                          return function cb() {
+                              if (arguments.length == 0) {
+                                  return fn.apply(this, _args)
+                              }
+                              Array.prototype.push.apply(_args, arguments);
+                              return cb;
+                          }
+                      }
+                      </pre>
+                      <p>
+                        下面一个例子：
+                      </p>
+                      <p>
+                        已知 <em>fn </em>为一个固定了参数个数的函数，实现函数 <em>curryIt</em>，调用之后满足如下条件：
+                      </p>
+                      <pre>function fn(a, b, c) {
+                           return a + b + c
+                      }; 
+                      curryIt(fn)(1)(2)(3);      //6
+
+                      function curryIt(fn) {
+                           var length = fn.length,
+                              args = [];
+                             return function cb(arg){
+                                   args.push(arg);
+                                   if(args.length &lt; length){
+                                         return cb;
+                               }else {
+                                   return fn.apply(null,args);
+                               }
+                             }
+                      }
+                      </pre>
+                      <p>
+                        再看另外一个例子，函数<em>add</em>中的参数不固定：
+                      </p>
+                      <pre>var add = function() {
+                        var _args = [].slice.apply(arguments), 
+                            sum = 0;
+                        _args.forEach(function(value){
+                          sum += value;
+                        })
+                        return sum;
+                      }
+                      var curry = function(fn) {
+                        var _args = []
+                        return function cb() {
+                          if (arguments.length == 0) {
+                            return fn.apply(null, _args)
+                          }else{
+                            [].push.apply(_args, arguments);
+                            return cb;
+                          }
+                        }
+                      }
+                      console.log(curry(add)(1)(2)(3)(6)())    //12
+                      </pre>
+                      <p>
+                        上面两个例子最大的不同就是应用函数的参数个数，一个（<em>fn</em>）是固定个数，另一个（<em>add</em>）不可估计。不同的需求柯里化的过程也是不一样的。上面的例子，对于固定个数的应用函数，使用<em>function</em>.<em>length</em>返回形参的个数，因此只需要在每次合并参数数组的时候判断数组的<em>length</em>来确定最终返回的是函数对象还是函数执行的结果。而对于不可估计参数个数的应用函数，在合并参数数组的时候要判断传入的参数是否为空，这就是为什么<em>add</em>的柯里化函数执行的时候要多一个()的原因；
+                      </p>
+                      <p>
+                        <strong><span style="font-size:18px;">3 固定易变因素。</span></strong>
+                      </p>
+                      <p>
+                        柯里化特性决定了它这应用场景。提前把易变因素，传参固定下来，生成一个更明确的应用函数。最典型的代表应用，是<em>bind</em>函数用以固定this这个易变对象。
+                      </p>
+                      <pre>var o = {
+                        name: "tom",
+                      };
+                      function sayHi(){
+                        console.log("hi~",this.name);
+                      }
+                      Function.prototype.bind = function(context) {
+                        var _this = this,     //Function对象的属性this指向Function
+                            _args =[].slice.call(arguments, 1);
+                         return function() {
+                          return _this.apply(context, _args.concat([]slice.call(arguments)))
+                        }
+                      }
+                      var say = sayHi.bind(o);
+                      say();    //hi~tom
+                      </pre>
+                      <p>
+                        Function本身是对象，对象方法的this指向的是当前对象（this.apply == sayHi.apply）就不用我多说了吧。
+                      </p>
+                 </div>
+                 
+                  <div class="xh_fx">
+                        <div class="article-social">
+                          <a href="javascript:;" data-action="ding" data-id="312" id="Addlike" class="action" data-original-title="" title="">
+                                <i class="fa fa-heart-o"></i>喜欢 (<span class="count">76</span>)
+                                </a>
+                                <span class="or">or</span>
+                                <span class="action" data-bd-bind="1510169987782">
+                                    <i class="fa fa-share-alt"></i>分享 (<span class="bds_count" data-cmd="count" title="累计分享16次">16</span>)
+                                    <div class="action-popover" style="display:none;">
+                                    <div class="popover top in">
+                                    <div class="arrow"></div>
+                                    <!-- <div class="popover-content"><a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="" data-original-title="分享到新浪微博"></a><a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="" data-original-title="分享到QQ空间"></a><a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="" data-original-title="分享到腾讯微博"></a><a href="#" class="qq fa fa-qq" data-cmd="sqq" title="" data-original-title="分享到QQ好友"></a><a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="" data-original-title="分享到人人网"></a><a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="" data-original-title="分享到微信"></a><a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more" data-original-title="" title=""></a>
+                                    </div> -->
+
+                                  <!-- JiaThis Button BEGIN -->
+                                  <div class="jiathis_style_24x24">
+                                    <a class="jiathis_button_qzone"></a>
+                                    <a class="jiathis_button_tsina"></a>
+                                    <a class="jiathis_button_tqq"></a>
+                                    <a class="jiathis_button_weixin"></a>
+                                    <a class="jiathis_button_renren"></a>
+                                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                                  </div>
+                                  <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                                  <!-- JiaThis Button END -->
+
+
+                                    </div>
+                                    </div>
+                                </span> 
+                        </div>
+                  </div>
+
+                  <footer class="entry-footer">
+                    <div class="previous">
+                        <a href="#" rel="prev">
+                          <div class="text">上一篇</div> 
+                          <h4>上一篇文章</h4>
+                        </a>
+                    </div>
+                    <div class="next">
+                        <a href="#" rel="next">
+                          <div class="text">下一篇</div> 
+                          <h4>下一篇文章</h4>
+                        </a>
+                    </div>
+                  </footer>
+
+               </div>
+          </div>
+
+          <div class="article_rt">
+              <aside>
+                  <form name="formsearch" method="get" action="&#10;Notice: 自2.2.0版本起，已&lt;strong&gt;不建议&lt;/strong&gt;给get_bloginfo传入一个参数！&lt;code&gt;home&lt;/code&gt;选项已被函数&lt;code&gt;bloginfo()&lt;/code&gt;取代，请改用&lt;code&gt;url&lt;/code&gt;选项。 in /home/cuijingjing/html/wp-includes/functions.php on line 3936&#10;http://www.ilovecc.ren">
+                      <div class="form clearfix">
+                          <label for="s"></label>
+                          <input type="text" name="s" class="search-keyword" onfocus="if (this.value == '搜索...') {this.value = '';}" onblur="if (this.value == '') {this.value = '搜索...';}" value="搜索...">
+                          <button type="submit" class="select_class" onmouseout="this.className='select_class'" onmouseover="this.className='select_over'">搜索</button>
+                      </div>
+                </form>
+            </aside>
+            <aside class="navigation">
+                <div class="nav-wrapper">
+                    <h2>栏目导航</h2>
+                </div>
+                <ul>
+                  <li><a href="#" target="blank">个人作品</a></li>
+                  <li><a href="#" target="blank">人生感悟</a></li>
+                  <li><a href="#" target="blank">技术探讨</a></li>
+                  <li><a href="#" target="blank">demo测试</a></li>
+                </ul>
+            </aside>
+            
+            <!-- 球状标签云开始 -->
+            <div class="bq_box">
+               <div class="bq_title">
+                 <span>标签云</span>
+               </div>
+                <div id="tagbox">
+                  <a href="#">HTML</a> 
+                  <a class="red" href="#">CSS3</a> 
+                  <a href="#">Javascript</a> 
+                  <a href="#">Jquery</a> 
+                  <a class="blue" href="#">ionic</a> 
+                  <a href="#">anglar</a> 
+                  <a class="red" href="#">recat</a> 
+                  <a class="pink" href="#">bootstrap</a> 
+                  <a href="#">node</a> 
+                  <a class="red" href="#">PHP</a> 
+                  <a href="#">Ajax</a> 
+                  <a class="red" href="#">Vue</a> 
+                  <a class="pink" href="#">浪漫</a>
+                  <a href="#">代码</a> 
+                  <a href="#">资源</a> 
+                  <a class="pink" href="#">插件</a> 
+                  <a class="blue" href="#">下载</a> 
+                  <a href="#">音乐</a> 
+                  <a class="blue" href="#">模板</a> 
+                  <a href="#">课件</a> 
+                  <a href="#">图片</a> 
+                  <a href="#">名校</a> 
+                  <a class="red" href="#">冥想</a>
+                  <a href="#">HTML</a> 
+                  <a class="red" href="#">CSS3</a> 
+                  <a href="#">Javascript</a> 
+                  <a href="#">Jquery</a> 
+                  <a class="blue" href="#">ionic</a> 
+                  <a href="#">anglar</a> 
+                  <a class="red" href="#">recat</a> 
+                  <a class="pink" href="#">bootstrap</a> 
+                  <a href="#">node</a> 
+                  <a class="red" href="#">PHP</a> 
+                  <a href="#">Ajax</a> 
+                  <a class="red" href="#">Vue</a> 
+                  <a class="pink" href="#">浪漫</a>
+                  <a href="#">代码</a> 
+                  <a href="#">资源</a> 
+                  <a class="pink" href="#">插件</a> 
+                  <a class="blue" href="#">下载</a> 
+                  <a href="#">音乐</a> 
+                  <a class="blue" href="#">模板</a> 
+                  <a href="#">课件</a> 
+                  <a href="#">图片</a> 
+                  <a href="#">名校</a> 
+                  <a class="red" href="#">冥想</a> 
+                </div>
+            </div>
+            <!-- 球状标签云结束 -->
+
+          </div>
+      </div>
+
+        <!--留言高速版-->
+        <div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>
+        <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+        appid: 'cytj83MPc',
+        conf: 'prod_5eaa9ef4326e06b4acf346105afd048f'
+        });
+        </script>
+
+
+
+    </div>
+  </div>
+  <div class="blank"></div>
+<div id="copright">Design by x 京ICP备17019651</div>
+<div class="gotop" id="gotop" style="background-position: 0px 0px;"></div>
+</body>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+  $(".action").mouseover(function() {
+    $(".action-popover").css({
+      display: 'block',
+    });
+  });
+  $(".action").mouseout(function() {
+    $(".action-popover").css({
+      display: 'none',
+    });
+  });
+</script>
+<script type="text/javascript">
+    //禁止鼠标右键
+    document.oncontextmenu = function(){
+        return false;
+    }
+    //禁止元素被选中
+    if (typeof(document.onselectstart) != 'undefined') {       
+        // IE chrome下禁止元素被选中       
+        document.onselectstart = function(){
+            return false;
+        }
+    } else {
+            // firefox下禁止元素被选中的变通办法       
+            document.write('<style type="text/css">body { -moz-user-select: none; }</style>');     
+    }
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9b3c505c7eea1642fc196b7fc659663e 
+
+";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r8.gif" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</html>

@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* 分页 */
+.pagelist {text-align: center;color: #666;width: 100%;clear: both;margin: 10px 0;display: block}
+.pagelist a {color: #666;margin: 0 2px}
+.pagelist a:hover {color: #f00;text-decoration: underline}
+/* 文字图片列表*/
+.dtxw {overflow: hidden;margin: 30px auto}
+.dttext {width: 60%;border-bottom: #838484 1px solid;margin-left: 40px;}
+.dttext ul {padding: 20px 20px 20px 80px}
+.xwpic {width: 28%;overflow: hidden;background: #ccc}
+.xwpic img {-webkit-transition: all 0.5s;-moz-transition: all 0.5s;-o-transition: all 0.5s;height: 140px;margin: auto;display: block;}
+.xwpic img:hover {-webkit-transform: scale(1.1);-moz-transform: scale(1.1);-o-transform: scale(1.1);-ms-transform: scale(1.1);}
+.dtxw li {width: 100%;position: relative;clear: both;list-style: none;margin-bottom: 30px;overflow: hidden}
+.dtxw li:first-child::before {content: "01";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dtxw li:nth-child(2)::before {content: "02";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dtxw li:nth-child(3)::before {content: "03";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dtxw li:nth-child(4)::before {content: "04";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dtxw li:nth-child(5)::before {content: "05";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dtxw li:nth-child(6)::before {content: "06";position: absolute;left: 40px;top: 40px;font-size: 40px;color: #aeaeae}
+.dttext span {text-align: right;float: right;color: #999}
+.dttext h2 {font-size: 18px;font-weight: normal;padding: 5px 10px;color: #333;background: #ccc;margin-bottom: 10px}
+.dttext {line-height: 24px}
+

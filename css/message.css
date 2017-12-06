@@ -1,0 +1,116 @@
+@charset "utf-8";
+.mesg{background: #fff}
+.readers ul, .post_copyright {
+    border: 1px #ddd solid;
+    border-radius: 5px;
+    margin: 0.5%;
+    height: auto;
+    padding: 7px 0;
+    max-width: 99%;
+}
+ .post_copyright{
+ 	text-indent: 20px;
+ 	padding: 20px 0;
+ 	background: url(../images/yong.png) no-repeat 90% bottom;
+ 	}   
+.readers ul li {
+    margin: 4px 0.15% 4px 0.1%;
+    list-style-type: none;
+    display: inline;
+}
+.readers img {
+    margin: 0 0 2px 0.25%;
+    /*width: 4.49%;*/
+    height: 45px;
+    vertical-align: middle;
+    -moz-opacity: 0.8;
+    background: #F4F4F4;
+    border-radius: 6px;
+    padding: 0px;
+    -webkit-box-shadow: 2px 2px 6px #999;
+    -moz-box-shadow: 2px 2px 6px #999;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+}
+.avatar:hover{
+  -moz-transform: rotate(360deg); 
+  -webkit-transform: rotate(360deg); 
+  -o-transform: rotate(360deg); 
+  -ms-transform: rotate(360deg); 
+  transform: rotate(360deg); 
+}
+.llink {
+    background-color: #eee;
+    width: 100%;
+    padding: 5px 0;
+    background: #fff;
+}
+.neilink {
+    font-size: 1.2em;
+    color: #fff;
+    padding: 6px 12px 5px 12px;
+    margin-left: 150px;
+    background: #4773b1;
+}
+.item {
+    border: 1px #ddd solid;
+    border-radius: 5px;
+    margin:20px 10px 20px 10px;
+    height: auto;
+    padding: 20px 7px 7px 7px;
+    position: relative;
+    max-width: 99%;
+    color: #777777;
+    font-size: 1.08em;
+    line-height: 24px;
+    background: #fdfdfd;
+    text-shadow: 0 1px 3px rgba(34,25,25,0.2);
+}
+del {
+    color: pink;
+}
+[class^="icon-"], [class*=" icon-"], [id^="icon-"], [id*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.item .status {
+    background: rgba(219, 57, 76, 0.81);
+    color: #fff;
+    font-size: 1.08em;
+    left: 140px;
+    padding: 2px 8px 5px 12px;
+    margin-bottom: 20px;
+    position: absolute;
+    text-transform: uppercase;
+    top: -10px;
+    z-index: 1;
+}
+.item .status:before {
+    border-bottom: 10px solid rgb(182, 143, 157);
+    border-left: 8px solid transparent;
+    content: "";
+    display: block;
+    height: 0px;
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 1px;
+}
+.item .status:after {
+    border-bottom: 10px solid rgb(182, 143, 157);
+    border-right: 8px solid transparent;
+    content: "";
+    display: block;
+    height: 0px;
+    position: absolute;
+    right: -9px;
+    top: 0;
+    width: 1px;
+}

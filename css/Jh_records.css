@@ -1,0 +1,42 @@
+@charset "utf-8";
+.dtxw {overflow: hidden;margin: 30px auto;}
+.dtxw nav{width: 140px;float: left;background:#ea98b9;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;}
+.dtxw nav ul li{text-align: center;line-height: 41px;border-bottom: 1px solid #de74a0;}
+.dtxw nav ul li:last-child{border-bottom:none;}
+.dtxw nav ul li a{color: #fff;cursor: pointer;}
+.nhover{color: #fff;padding: 10px; display: block;line-height: 20px;background:#ea6363;font-size: 14px;text-align: center;border-radius: 30px 4px;}
+.fixs{position: fixed;top:0;}
+.jh_rt{width: 760px;float: right;}
+.jh_div{width: 100%;overflow: auto;margin-bottom: 50px;}
+.jh_div h2{width: 98%;border: 1px solid #ccc;font-size: 18px;padding: 5px 5px;}
+.jh_div li {float: left;width: 156px;height: 80px;margin-right: 15px;margin-top: 1%;padding: 10px;font-size: 12px;background-color: #fff;}
+.jh_div li div:nth-child(5){width: 155px;height: 75px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:4;overflow: hidden;}
+.jh_div li:nth-child(4n){margin-right: 0;}
+.jh_div li a:hover {color: #FD8C84;border-bottom-color: #FD8C84;}
+.jh_div li a {margin-bottom: 5px;display: inline-block;font-size: 14px;font-weight: bold;color: #61B3E6;border-bottom: 2px solid transparent;}
+.border_animation{border: 1px solid #f3bbbb;float: left;position: relative;}
+.border_animation .border_top{
+    position:absolute;height:1px;width:0;font-size:0;background:red;top:0;left:0;
+    -webkit-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+    transition:all 0.5s ease-out;}
+.border_animation .border_right{
+    position:absolute;height:0px;width:1px;font-size:0;background:blue;bottom:0;right:0;
+    -webkit-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+    transition:all 0.5s ease-out;
+}
+.border_animation .border_bottom{
+    position:absolute;height:1px;width:0px;font-size:0;background:yellow;right:0;bottom:0;
+    -webkit-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+    transition:all 0.5s ease-out;
+}
+.border_animation .border_left{
+    position:absolute;height:0px;width:1px;font-size:0;background:green;left:0;top:0;
+    -webkit-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+    transition:all 0.5s ease-out;
+}
+ .hover .border_top, .hover .border_bottom{width:176px}
+ .hover .border_left, .hover .border_right{height:101px}

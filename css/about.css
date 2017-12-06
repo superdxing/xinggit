@@ -1,0 +1,36 @@
+@charset "utf-8";
+.aboutmain{background: #fff;}
+.gy_box{width: 55%;min-height: 509px;margin-top: 35px;background: url(../images/left_bg.png) top left repeat-y;    padding: 0 20px 0 25px;float: right;}
+.gy{width: 100%;}
+.gy h2{
+    font-size: 18px;
+    margin-bottom: 20px;
+    background: #d0a0dc;
+    color: #fff;
+    padding: 7px 0;
+    width: 99%;
+    text-indent:20px;
+    border-radius: 0 30px 30px 0;
+    box-shadow: #9111ef 1px 1px 1px;
+    border-left: #ff6464 6px solid;
+    -webkit-animation-name: breath;
+                -webkit-animation-duration: 6s;     /*人的普通呼吸时间是3秒每次，深呼吸时间是6秒每次*/
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes 'breath' {
+                from {
+                    opacity:0.2;
+                }
+                50% {
+                    opacity:1;
+                }
+                to {
+                    opacity:0.2;
+                }
+            }
+
+.gy div{width: 100%;padding-bottom: 20px;line-height: 25px;font-size: 14px;}
+.gy_right{width: 40%;min-height: 509px;margin: 35px 0;float: left;background: url(../images/ww.png) no-repeat;}
+.gy_right .lf_box{padding-left: 190px;line-height: 30px;font-size: 13px;overflow: hidden;}
+.gy_right .lf_box span{color: #009999;font-size: 15px;font-weight: bold;}
